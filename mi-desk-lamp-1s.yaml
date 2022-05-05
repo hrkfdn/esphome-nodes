@@ -28,6 +28,7 @@ wifi:
 
 # Enable logging
 logger:
+  level: WARN
 
 # Enable Home Assistant API
 api:
