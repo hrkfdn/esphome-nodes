@@ -1,9 +1,9 @@
 substitutions:
-  friendly_name: Bedroom Sensor
-  device_name: bedroom-sensor-bme280
+  friendly_name: Office Sensor
+  device_name: office-sensor-bme280
 
 esphome:
-  name: bedroom
+  name: office
 
 esp32:
   board: esp32dev
@@ -12,6 +12,7 @@ esp32:
 
 # Enable logging
 logger:
+  level: WARN
 
 # WiFi connection
 wifi:
