@@ -49,7 +49,7 @@ wifi:
   password: !secret wifi_password
 
 api:
-  password: !secret api_password
+  encryption: !secret api_encryption
 
 ota:
   password: !secret ota_password
