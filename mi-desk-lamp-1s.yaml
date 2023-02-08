@@ -63,8 +63,8 @@ sensor:
   # Mi Desk Lamp 1S Config
   - platform: rotary_encoder
     id: rotation
-    pin_a: GPIO26
-    pin_b: GPIO27
+    pin_a: GPIO27
+    pin_b: GPIO26
     resolution: 2
     on_value:
       then:
@@ -78,7 +78,7 @@ sensor:
                   auto min_temp = id(light1).get_traits().get_min_mireds();
                   auto max_temp = id(light1).get_traits().get_max_mireds();
                   auto cur_temp = id(light1).current_values.get_color_temperature();
-                  auto new_temp = max(min_temp, min(max_temp, cur_temp + (-x*20)));
+                  auto new_temp = max(min_temp, min(max_temp, cur_temp + (x*10)));
                   auto call = id(light1).turn_on();
                   call.set_color_temperature(new_temp);
                   call.perform();
@@ -87,7 +87,7 @@ sensor:
               - light.dim_relative:
                   id: light1
                   relative_brightness: !lambda |-
-                    return -x / 10.0;
+                    return x / 10.0;
         # Reset Rotation to 0
         - sensor.rotary_encoder.set_value:
             id: rotation
@@ -102,7 +102,9 @@ binary_sensor:
       mode: INPUT_PULLDOWN
     on_click:
       then:
-        - light.toggle: light1
+        - light.toggle:
+            id: light1
+            transition_length: 0.2s
 
 output:
   - platform: ledc
@@ -129,7 +131,7 @@ light:
     id: light1
     default_transition_length: 0s
     constant_brightness: true
-    name: "Lights"
+    name: "${friendly_name} Light"
     cold_white: output_cw
     warm_white: output_ww
     cold_white_color_temperature: 4800 K
