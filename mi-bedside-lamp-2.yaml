@@ -7,7 +7,7 @@
 
 substitutions:
   name: mi-bedside-lamp-2
-  friendly_name: Mi Bedside Lamp 2
+  friendly_name: Bedside Lamp
   #light_name: ${friendly_name} RGBWW Light
   #light_mode_text_sensor_name: ${friendly_name} Light Mode
   default_transition_length: 200ms
@@ -32,7 +32,7 @@ substitutions:
 packages:
   bslamp2:
     url: https://github.com/mmakaay/esphome-xiaomi_bslamp2
-    ref: release/2024.10.0
+    ref: release/2025.7.0
     files:
       - packages/core.yaml
       - packages/behavior_default.yaml
